@@ -1,6 +1,6 @@
 # react-image-tooltip
 
-> TODO: Component Description
+> Image tooltip for React
 
 [![NPM](https://img.shields.io/npm/v/react-image-tooltip.svg)](https://www.npmjs.com/package/react-image-tooltip) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -15,7 +15,7 @@ npm install --save react-image-tooltip
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-modern-library-component'
+import MyComponent from 'react-image-tooltip'
 
 class Example extends Component {
   render () {
@@ -28,4 +28,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [Travis Fischer](https://github.com/transitive-bullshit)
+MIT © [Jezfx](https://github.com/Jezfx)
