@@ -1,7 +1,7 @@
-import ExampleComponent from './'
+import ReactImageTooltip from "./";
 
-describe('ExampleComponent', () => {
-  it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
-  })
-})
+describe("ReactImageTooltip", () => {
+  it("is truthy", () => {
+    expect(ReactImageTooltip).toBeTruthy();
+  });
+});
