@@ -25,9 +25,9 @@ class Example extends Component {
   render () {
     return (
       <ReactImageTooltip image={ohYeah}>
-          <Link to="https://www.linkedin.com/in/jezwilliams/">
-              LinkedIn
-          </Link>
+          <a href="https://jezfx.com">
+              Jezfx
+          </a>
       </ReactImageTooltip>
     )
   }
