@@ -1,6 +1,6 @@
 {
-  "name": "react-modern-library-boilerplate-example",
-  "homepage": "https://transitive-bullshit.github.io/react-modern-library-boilerplate",
+  "name": "react-image-tooltip-example",
+  "homepage": "https://transitive-bullshit.github.io/react-image-tooltip",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
@@ -8,7 +8,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-modern-library-boilerplate": "link:..",
+    "react-image-tooltip": "link:..",
     "react-scripts": "^1.1.4"
   },
   "scripts": {

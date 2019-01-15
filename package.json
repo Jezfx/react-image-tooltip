@@ -1,10 +1,10 @@
 {
-  "name": "react-modern-library-boilerplate",
+  "name": "react-image-tooltip",
   "version": "1.4.1",
   "description": "Boilerplate for publishing modern React modules with Rollup",
   "author": "Travis Fischer",
   "license": "MIT",
-  "repository": "transitive-bullshit/react-modern-library-boilerplate",
+  "repository": "transitive-bullshit/react-image-tooltip",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "engines": {
