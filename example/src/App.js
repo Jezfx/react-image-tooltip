@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import fart from "./fart.gif";
 
-import ExampleComponent from 'react-image-tooltip'
+import ReactImageTooltip from "react-image-tooltip";
 
 export default class App extends Component {
-  render () {
+  render() {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        This is some random text and this is a link{" "}
+        <ReactImageTooltip image={fart} width={300}>
+          <a href="#">THIS IS A LINK</a>
+        </ReactImageTooltip>
       </div>
-    )
+    );
   }
 }
