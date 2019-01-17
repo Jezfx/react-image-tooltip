@@ -1,6 +1,6 @@
 {
   "name": "react-image-tooltip",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Image tooltip for React",
   "author": "Jezfx",
   "license": "MIT",
@@ -57,5 +57,6 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {}
 }

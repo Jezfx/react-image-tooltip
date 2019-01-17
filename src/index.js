@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import { randomString } from "./utils";
+
 export default class ReactImageTooltip extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired,
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     image: PropTypes.string.isRequired,
     width: PropTypes.number,
     height: PropTypes.number
@@ -11,60 +13,73 @@ export default class ReactImageTooltip extends Component {
 
   state = {
     display: false,
-    mouseX: 0,
-    mouseY: 0
+    clientX: 0,
+    clientY: 0
   };
 
+  uniqueClassName = randomString(4);
+
   toogleImage = () => {
-    this.setState({
-      display: !this.state.display
-    });
+    this.setState(prevState => ({
+      display: !prevState.display
+    }));
   };
 
   handleMouseOver = event => {
-    console.log(event.clientX);
+    const { clientX, clientY } = event;
     this.setState({
-      mouseX: event.clientX,
-      mouseY: event.clientY
+      clientX,
+      clientY,
+      display: true
     });
   };
 
   render() {
-    const { children, image } = this.props;
+    const { children, image, width, height } = this.props;
+    const { display, clientY, clientX } = this.state;
 
-    const childrenStyles = {
-      display: "inline-block",
-      position: "relative",
-      zIndex: 1
-    };
-
-    const imageStyles = {
-      top: `${this.state.mouseY - 50}px`,
-      left: `${this.state.mouseX - 50}px`,
-      width: this.props.width ? `${this.props.width}px` : "300px",
-      height: this.props.height ? `${this.props.height}px` : "100%",
-      pointerEvents: "none",
-      position: "fixed",
-      background: `url(${this.props.image})`,
-      backgroundSize: "contain",
-      backgroundRepeat: "no-repeat",
-      zIndex: 0
-    };
-
-    return image ? (
-      <span
-        onMouseEnter={this.toogleImage}
-        onMouseLeave={this.toogleImage}
-        onMouseMoveCapture={this.handleMouseOver}
-        onTouchStart={() => this.setState({ display: false })}
-      >
-        <span style={this.state.display ? childrenStyles : null}>
+    return (
+      <React.Fragment>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+            .${this.uniqueClassName}:after {
+              visibility: ${display ? "visible" : "hidden"};
+              opacity: ${display ? "1" : "0"};
+              top: ${clientY - 50}px;
+              left: ${clientX - 50}px;
+            }
+          `
+          }}
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+            .${this.uniqueClassName}:after {
+              background-image: url(${image});
+              width: ${width ? `${width}px` : "300px"};
+              height: ${height ? `${height}px` : "100%"};
+              pointer-events: none;
+              position: fixed;
+              background-size: contain;
+              background-repeat: no-repeat;
+              z-index: -1;
+              content: "";
+            }
+          }
+          `
+          }}
+        />
+        <span
+          onMouseEnter={() => this.toogleImage()}
+          onMouseLeave={() => this.toogleImage()}
+          onMouseMoveCapture={this.handleMouseOver}
+          onTouchStart={() => this.setState({ display: false })}
+          className={this.uniqueClassName}
+        >
           {children}
         </span>
-        {this.state.display && <span style={imageStyles} />}
-      </span>
-    ) : (
-      children
+      </React.Fragment>
     );
   }
 }
