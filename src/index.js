@@ -8,7 +8,10 @@ export default class ReactImageTooltip extends Component {
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     image: PropTypes.string.isRequired,
     width: PropTypes.number,
-    height: PropTypes.number
+    height: PropTypes.number,
+    zIndex: PropTypes.number,
+    offsetX: PropTypes.number,
+    offsetY: PropTypes.number
   };
 
   state = {
@@ -28,8 +31,8 @@ export default class ReactImageTooltip extends Component {
   handleMouseOver = event => {
     const { clientX, clientY } = event;
     this.setState({
-      clientX,
-      clientY,
+      clientX: clientX + offsetX,
+      clientY: clientX + offsetY,
       display: true
     });
   };
@@ -63,7 +66,7 @@ export default class ReactImageTooltip extends Component {
               position: fixed;
               background-size: contain;
               background-repeat: no-repeat;
-              z-index: -1;
+              z-index: zIndex;
               content: "";
             }
           }
